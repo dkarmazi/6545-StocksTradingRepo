@@ -28,6 +28,7 @@ public class TradingServer extends UnicastRemoteObject implements
 
 	public String sayHello() {
 		System.out.println("request from client");
+		//hi from Ahmad EGIT
 		return "Hello World! using my keys";
 	}
 
