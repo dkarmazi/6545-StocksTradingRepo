@@ -50,4 +50,15 @@ public class Enumeration {
         {
             public final static String INPUT_VALIDATION_INVAILD_DOUBLE_FORMAT = "Invalid number format, should be #,##.0.00";
         }
+        
+        public static class Security
+        {
+            public final static int PASSWORD_MIN_LENGTH = 8;
+            public final static int PASSWORD_DEFAULT_LENGTH = 12;
+            public final static int PASSWORD_MIN_LOWER = 2;
+            public final static int PASSWORD_MIN_UPPER = 2;
+            public final static int PASSWORD_MIN_DIGIT = 2;
+            public final static int PASSWORD_MIN_SPECL = 0;
+            
+        }
 }
