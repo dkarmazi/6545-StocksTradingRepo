@@ -4,18 +4,18 @@
  */
 package StockTradingClient;
 
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.net.InetAddress;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.annotation.Resource;
+import RMI.*;
+import StockTradingCommon.Enumeration.BrokerageFirm;
+import StockTradingServer.User;
 
 /**
  *
@@ -23,7 +23,9 @@ import javax.annotation.Resource;
  */
 public class Admin extends Application {
     
-    private Stage stage;
+        private static final int PORT = 2019;
+        private Stage stage;
+        public static ServerInterface serverInterface;
     
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -78,7 +80,32 @@ public class Admin extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+        try {
+                        // Make reference to SSL-based registry
+                        String host = (args.length < 1) ? "127.0.0.1" : args[0];
+
+                        Registry registry = LocateRegistry.getRegistry(InetAddress
+                                        .getByName(host).getHostName(), PORT,
+                                        new RMISSLClientSocketFactory());
+
+                        // "serverInterface" is the identifier that we'll use to refer
+                        // to the remote object that implements the "serverInterface"
+                        // interface
+
+                        serverInterface = (ServerInterface) registry
+                                        .lookup("TradingServer");
+
+                        String message = serverInterface.getHello();
+
+                        System.out.println(message + "\n");
+                        launch(args);
+
+                } catch (Exception e) {
+                        System.out.println("Admin exception: " + e.getMessage());
+                        e.printStackTrace();
+                }
+
+
     }
     
     
