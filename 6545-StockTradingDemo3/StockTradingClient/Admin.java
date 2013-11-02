@@ -18,7 +18,7 @@ import StockTradingCommon.Enumeration.BrokerageFirm;
 import StockTradingServer.User;
 
 /**
- *
+ **
  * @author Sulochane
  */
 public class Admin extends Application {
