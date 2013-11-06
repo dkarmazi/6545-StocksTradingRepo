@@ -61,4 +61,13 @@ public class Enumeration {
             public final static int PASSWORD_MIN_SPECL = 0;
             
         }
+        
+        public static class PasswordGrade
+        {
+            public final static int PASSWORD_STRENGTH_VERYWEAK = 1;
+            public final static int PASSWORD_STRENGTH_WEAK = 2;
+            public final static int PASSWORD_STRENGTH_GOOD = 3;
+            public final static int PASSWORD_STRENGTH_STRONG = 4;
+            public final static int PASSWORD_STRENGTH_VERYSTRONG = 5;
+        }
 }
